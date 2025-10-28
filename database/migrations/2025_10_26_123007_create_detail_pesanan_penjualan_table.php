@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('id_produk')->constrained('produk')->onDelete('restrict');
             $table->integer('jumlah');
             $table->decimal('harga_saat_jual', 15, 2);
-            // Tidak ada timestamps
+            $table->timestamps();
         });
     }
 

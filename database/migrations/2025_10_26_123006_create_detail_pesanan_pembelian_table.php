@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('id_bahan_baku')->constrained('bahan_baku')->onDelete('restrict');
             $table->decimal('jumlah', 10, 2);
             $table->decimal('biaya_per_unit', 15, 2);
-            // Tidak ada timestamps
+            $table->timestamps();
         });
     }
 

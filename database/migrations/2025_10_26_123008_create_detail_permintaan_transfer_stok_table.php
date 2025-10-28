@@ -12,7 +12,7 @@ return new class extends Migration
             $table->foreignId('id_permintaan')->constrained('permintaan_transfer_stok')->onDelete('cascade');
             $table->foreignId('id_bahan_baku')->constrained('bahan_baku')->onDelete('restrict');
             $table->decimal('jumlah_diminta', 10, 2);
-            // Tidak ada timestamps
+            $table->timestamps();
         });
     }
 

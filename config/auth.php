@@ -110,6 +110,13 @@ return [
     |
     */
 
+    'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Pengguna::class, // <-- Menjadi ini
+    ],
+],
+
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
 ];

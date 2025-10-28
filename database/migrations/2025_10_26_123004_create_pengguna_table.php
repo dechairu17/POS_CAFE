@@ -11,8 +11,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_peran')->constrained('peran')->onDelete('restrict');
             $table->foreignId('id_gudang')->nullable()->constrained('gudang')->onDelete('set null');
-            $table->string('nama');
-            $table->string('email')->unique();
+            
+            // --- INI YANG DIUBAH ---
+            $table->string('nama_lengkap'); // Mengganti 'nama'
+            $table->string('username')->unique(); // Mengganti 'email'
+            // ---------------------
+
             $table->string('kata_sandi');
             $table->timestamps();
         });

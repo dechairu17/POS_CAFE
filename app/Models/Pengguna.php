@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable; // Penting untuk Auth
+use Illuminate\Foundation\Auth\User as Authenticatable; 
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -13,9 +13,17 @@ class Pengguna extends Authenticatable
 
     protected $table = 'pengguna';
     
-    protected $fillable = ['id_peran', 'id_gudang', 'nama_lengkap', 'username', 'kata_sandi'];
+
+    protected $fillable = ['id_peran', 'id_gudang', 'nama_lengkap', 'username'];
+
     protected $hidden = ['kata_sandi'];
 
+
+    public function getAuthPasswordName()
+    {
+        return 'kata_sandi';
+    }
+    
     public function peran()
     {
         return $this->belongsTo(Peran::class, 'id_peran');

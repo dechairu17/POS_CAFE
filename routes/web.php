@@ -14,9 +14,15 @@ Route::middleware('auth')->group(function () {
     // Rute Logout
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
+        // Rute Shift
+    Route::prefix('shift')->group(function () {
+        Route::post('/start', [\App\Http\Controllers\ShiftController::class, 'startShift'])->name('shift.start');
+        Route::post('/end', [\App\Http\Controllers\ShiftController::class, 'endShift'])->name('shift.end');
+        Route::get('/active', [\App\Http\Controllers\ShiftController::class, 'getActiveShift'])->name('shift.active');
+    });
+
     // Rute Dashboard (terproteksi)
     Route::get('/dashboard', function () {
-        
         $peran = Auth::user()->peran->nama; 
 
         // <-- INI BAGIAN YANG DIPERBAIKI -->
@@ -41,6 +47,11 @@ Route::middleware('auth')->group(function () {
 
     })->name('dashboard');
 
+    // API Routes
+    Route::prefix('api')->group(function () {
+        Route::get('/dashboard/manajer/stats', [\App\Http\Controllers\DashboardController::class, 'manajerStats'])->name('api.dashboard.manajer.stats');
+    });
+    
     // ...
     // Rute-rute lain yang terproteksi bisa diletakkan di sini
     // ...
